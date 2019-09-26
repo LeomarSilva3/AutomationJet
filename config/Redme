@@ -1,0 +1,11 @@
+1- NodeJs instalado
+2- npm instalado
+3- Instalar  packege.json no projeto
+   npm init
+4- instalar o jest.config.js
+    npm install --save-dev jest
+5- instalar o puppeter
+    npm install --save-dev jest-puppeteer
+    npm install --save-dev puppeteer
+
+

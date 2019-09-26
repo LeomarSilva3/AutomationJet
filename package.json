@@ -1,0 +1,22 @@
+{
+    "name": "jestautomation",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "jest:init": "jest --init"
+    },
+    "author": "lbarbosa :) ",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/plugin-proposal-class-properties": "^7.5.0",
+        "@babel/preset-env": "^7.6.0",
+        "@babel/preset-typescript": "^7.3.3",
+        "jest": "^24.9.0",
+        "jest-puppeteer": "^4.3.0",
+        "puppeteer": "^1.20.0",
+        "jest-cucumber": "^2.0.11"
+    }
+}
