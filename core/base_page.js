@@ -33,7 +33,7 @@ export default class BasePage {
     }
 
     async verifyAllTexts(locator, textos) {
-        const elementos = await this.page.$$('.alert-error div span');
+        const elementos = await this.page.$$(locator);
         var i = 0;
         for (const elemento of elementos) {
             var text = await this.page.evaluate(el => el.innerText, elemento);
