@@ -29,18 +29,7 @@ export default class BasePage {
     async verifyText(locator, text) {
         var elemento = await this.page.waitForSelector(locator, this.options);
         var texto = await this.page.evaluate((element) => element.textContent, elemento);
-        expect(texto).toContain(text);
-    }
-
-    async verifyAllTexts(locator, textos) {
-        const elementos = await this.page.$$(locator);
-        var i = 0;
-        for (const elemento of elementos) {
-            var text = await this.page.evaluate(el => el.innerText, elemento);
-            expect(textos[i]).toContain(text);
-            i++;
-        }
-
+        expect(text).toContain(texto);
     }
 
 }

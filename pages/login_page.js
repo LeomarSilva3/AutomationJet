@@ -6,17 +6,17 @@ export default class LoginPage extends BasePage {
         super(page);
     };
 
-    async openLoginPage() {
-        await super.openPage('https://triadproject.herokuapp.com/login.php')
+    async openLoginPage(url) {
+        await super.openPage(url)
     }
 
     async verifyPage() {
         await super.titlePage('Projeto TRIAD')
     }
 
-    async insertDataLogin() {
-        await super.typeInput('input[placeholder="Entre com seu E-mail"]', 'admin@gmail.com')
-        await super.typeInput('#login_pass', '123456')
+    async insertDataLogin(email, password) {
+        await super.typeInput('input[placeholder="Entre com seu E-mail"]', email)
+        await super.typeInput('#login_pass', password)
     }
 
     async clickButton() {
@@ -24,7 +24,7 @@ export default class LoginPage extends BasePage {
     }
 
     async verifyUserAuthenticated() {
-        await super.verifyText('.user-details', 'Olá Administrador');
+        await super.verifyText('.user-details div', " Olá Administrador ");
     }
 
     async verifyAlertMessage() {
@@ -32,14 +32,14 @@ export default class LoginPage extends BasePage {
         await super.verifyAllTexts('.alert-error div span', textos);
     }
 
-    async insertEmailInvalid() {
-        await super.typeInput('input[placeholder="Entre com seu E-mail"]', 'user.com')
-        await super.typeInput('#login_pass', '123456')
+    async insertEmailInvalid(email, password) {
+        await super.typeInput('input[placeholder="Entre com seu E-mail"]', email)
+        await super.typeInput('#login_pass', password)
     }
 
-    async verifyMessageEmailinvalid() {
-        var textos = ['E-mail: Inválido.']
-        await super.verifyAllTexts('.alert-error div span', textos);
+    async verifyMessageEmailinvalid(textos) {
+
+        await super.verifyText('.alert-error div span', textos);
     }
 
 
