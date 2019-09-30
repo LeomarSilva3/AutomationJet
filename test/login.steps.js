@@ -3,7 +3,6 @@ import LoginPage from '../pages/login_page';
 const feature = loadFeature("./feature/login.feature");
 jest.setTimeout(80000);
 
-
 defineFeature(feature, test => {
     let page;
     let loginPage;
@@ -12,7 +11,6 @@ defineFeature(feature, test => {
         page = await global.__BROWSER__.newPage();
         loginPage = new LoginPage(page);
     })
-
 
     test('Login with success', ({ given, when, then }) => {
         given(/^that view url "(.*)"$/, async(url) => {
