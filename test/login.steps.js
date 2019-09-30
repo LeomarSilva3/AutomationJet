@@ -1,18 +1,32 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import LoginPage from '../pages/login_page';
-const feature = loadFeature("./feature/login.feature");
+import ListReservesPage from '../pages/list_reserve_page';
+
+// const feature = loadFeature("./feature/login.feature");
+
+const feature = loadFeature('./feature/login.feature', {
+    tagFilter: '@loginSucess or @loginInvalid'
+});
+
 jest.setTimeout(80000);
+
+
+
 
 defineFeature(feature, test => {
     let page;
     let loginPage;
+    let reservesPage;
 
     beforeEach(async() => {
         page = await global.__BROWSER__.newPage();
         loginPage = new LoginPage(page);
+        reservesPage = new ListReservesPage(page);
     })
 
-    test('Login with success', ({ given, when, then }) => {
+
+
+    test('Login with success', async({ given, when, then }) => {
         given(/^that view url "(.*)"$/, async(url) => {
             await loginPage.openLoginPage(url);
 
@@ -29,7 +43,7 @@ defineFeature(feature, test => {
         });
     });
 
-    test('login invalid', ({ given, when, then }) => {
+    test('login invalid', async({ given, when, then }) => {
         given(/^that view url "(.*)"$/, async(url) => {
             await loginPage.openLoginPage(url);
         });
@@ -42,7 +56,6 @@ defineFeature(feature, test => {
         });
 
         then(/^view Error message "(.*)"$/, async(message) => {
-            console.log(message);
             await loginPage.verifyMessageEmailinvalid(message);
 
         });
