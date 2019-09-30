@@ -5,7 +5,6 @@ const feature = loadFeature("./feature/login.feature");
 
 jest.setTimeout(80000);
 
-
 defineFeature(feature, test => {
     let page;
     let loginPage;
@@ -18,8 +17,22 @@ defineFeature(feature, test => {
 
 
     test('Login with success', async({ given, when, then }) => {
-        Succeslogin(given, when, then);
+        given(/^that view url "(.*)"$/, async(url) => {
+            await loginPage.openLoginPage(url);
+
+        });
+
+        when(/^insert email "(.*)" and password "(.*)"$/, async(email, password) => {
+            await loginPage.insertDataLogin(email, password)
+            await loginPage.clickButton();
+            await page.waitFor(2000);
+        });
+
+        then('view my authentication with success', async() => {
+            await loginPage.verifyUserAuthenticated()
+        });
     });
+
 
     test('login invalid', async({ given, when, then }) => {
         given(/^that view url "(.*)"$/, async(url) => {
