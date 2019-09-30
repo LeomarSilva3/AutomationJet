@@ -3,13 +3,13 @@ Feature: Login
     I want can performs login in an application with e-mail and password valid
     For can view my authentication in application
 
-@loginSucess
+
  Scenario: Login with success
     Given that view url "https://triadproject.herokuapp.com/login.php"
     When insert email "admin@gmail.com" and password "123456"
     Then view my authentication with success
 
-@loginInvalid
+
  Scenario Outline: login invalid
     Given that view url "https://triadproject.herokuapp.com/login.php"
     When insert email "<email>" and password "<password>"
@@ -21,8 +21,4 @@ Feature: Login
         |  eee@gmail.com   |            | "Senha:  não informada. "                         |
         |                  |            | "E-mail:  não informado.  Senha:  não informada. "|
         |                  |   123456   | "E-mail:  não informado. "                        |
-       
-@reserves   
-Scenario: Performs a reserves office rooms as success
-    Given insert a office room "Sala da justiça"
-    Then view the office room in the list
+
