@@ -15,7 +15,7 @@ export default class LoginPage extends BasePage {
     }
 
     async insertDataLogin(email, password) {
-        await super.typeInput('input[placeholder="Entre com seu E-mail"]', email)
+        await super.typeInput('input[placeholder="Entre com seu E-mail"]', 'admin@gmail.com');
         await super.typeInput('#login_pass', password)
     }
 

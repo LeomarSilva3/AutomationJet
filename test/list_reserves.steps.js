@@ -8,7 +8,7 @@ jest.setTimeout(80000);
 
 
 defineFeature(feature, test => {
-    console.log("teste2")
+
     let page;
     let reservesPage;
 
@@ -22,11 +22,11 @@ defineFeature(feature, test => {
 
 
     test('Performs a reserves office rooms as success', async({ given, when, then }) => {
-        Init();
-        Succeslogin(given, when, then)
 
         given(/^insert a office room "(.*)"$/, async(text) => {
-
+            await reservesPage.insertUrl("https://triadproject.herokuapp.com/login.php");
+            await reservesPage.Data(email, password);
+            await reservesPage.button();
             await reservesPage.insertValueInput(text);
         });
 
